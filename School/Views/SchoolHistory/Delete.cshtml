@@ -1,0 +1,35 @@
+﻿@model School.Models.HistoryModel
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Изтриване</h2>
+
+<h3>Сигурни ли сте, че искате да изтриете този текст?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Content)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Content)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Изтрий" class="btn btn-default" />
+        </div>
+    }
+</div><br />
+
+<div>
+    @Html.ActionLink("Обратно в \"Преглед\"", "Index")
+</div>

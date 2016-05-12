@@ -1,0 +1,273 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/cssgooglemap")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+
+</head>
+<body>
+
+
+    @* http://red-team-design.com/css3-animated-dropdown-menu/ *@
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("ПГЛП „П. Славейков", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul id="nav">
+                    <li>@Html.ActionLink("Начало", "Index", "Home")</li>
+                    <li>
+                        <a href="#">За училището</a>
+                        <ul>
+                            <li>@Html.ActionLink("Колектив", "Team", "Home")</li>
+                            <li>@Html.ActionLink("План-прием", "PlanReception", "PlanReception")</li>
+                            <li>@Html.ActionLink("Специалности", "Specialties", "Specialties")</li>
+                            <li>
+                                <a href="#">Учебен процес</a>
+                                <ul>
+                                    <li>
+                                        @Html.ActionLink("График на учебната година", "LearningProcess", "LearningProcess")
+                                    </li>
+                                    <li>
+                                        @Html.ActionLink("График на учебните часове", "Hours", "LearningProcess")
+                                    </li>
+                                    <li>
+                                        @Html.ActionLink("График за консултации", "Consultations", "Consultations")</a>
+                                    </li>
+                                    <li><a href="#">Седмично разписание</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">Училищна документация</a></li>
+                        </ul>
+                    </li>
+                    <li>@Html.ActionLink("Контакти", "Contact", "Home")</li>
+
+                    @if (User.IsInRole("Administrator"))
+                    {
+                        <li>
+                            <a href="#">MenuAdmin</a>
+                            <ul>
+                                <li>
+                                    @Html.ActionLink("Roles Listing", "Index", "Roles", new { controller = "Roles", action = "Index", id = UrlParameter.Optional }, null)
+                                </li>
+                                <li>
+                                    @Html.ActionLink("Create Role", "Create", "Roles", new { controller = "Roles", action = "Create", id = UrlParameter.Optional }, null)
+                                </li>
+                                <li>
+                                    @Html.ActionLink("Edit Role", "Edit", "Roles", new { controller = "Roles", action = "Edit", id = UrlParameter.Optional }, null)
+                                </li>
+                                <li>
+                                    @Html.ActionLink("Manage Role", "ManageUserRoles", "Roles", new { controller = "Roles", action = "ManageUserRoles", id = UrlParameter.Optional }, null)
+                                </li>
+                            </ul>
+                        </li>
+                    }
+
+                    @if (User.IsInRole("Operator") || User.IsInRole("Administrator"))
+                    {
+                        <li>
+                            <a href="#">Съдържание</a>
+                            <ul>
+                                <li>
+                                    <a href="#">Исторически сведения</a>
+                                    <ul>
+                                        <li>
+                                            @Html.ActionLink("Добавяне", "Create", "SchoolHistory", new { controller = "SchoolHistory", action = "Create", id = UrlParameter.Optional }, null)
+                                        </li>
+                                        <li>
+                                            @Html.ActionLink("Преглед, редактиране, изтриване", "Index", "SchoolHistory", new { controller = "SchoolHistory", action = "Index", id = UrlParameter.Optional }, null)
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">Патрон на училището</a>
+                                    <ul>
+                                        <li>
+                                            @Html.ActionLink("Добавяне", "Create", "SchoolPatron", new { controller = "SchoolPatron", action = "Create", id = UrlParameter.Optional }, null)
+                                        </li>
+                                        <li>
+                                            @Html.ActionLink("Преглед, редактиране, изтриване", "Index", "SchoolPatron", new { controller = "SchoolPatron", action = "Index", id = UrlParameter.Optional }, null)
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">Материална база</a>
+                                    <ul>
+                                        <li>
+                                            @Html.ActionLink("Добавяне", "Create", "SchoolMaterialBase", new { controller = "SchoolMaterialBase", action = "Create", id = UrlParameter.Optional }, null)
+                                        </li>
+                                        <li>
+                                            @Html.ActionLink("Преглед, редактиране, изтриване", "Index", "SchoolMaterialBase", new { controller = "SchoolMaterialBase", action = "Index", id = UrlParameter.Optional }, null)
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">Колектив</a>
+                                    <ul>
+                                        <li>
+                                            @Html.ActionLink("Добавяне", "Create", "SchoolBasePerson", new { controller = "SchoolBasePerson", action = "Create", id = UrlParameter.Optional }, null)
+                                        </li>
+                                        <li>
+                                            @Html.ActionLink("Преглед, редактиране, изтриване", "Index", "SchoolBasePerson", new { controller = "SchoolBasePerson", action = "Index", id = UrlParameter.Optional }, null)
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">План-прием</a>
+                                    <ul>
+                                        <li>
+                                            @Html.ActionLink("Добавяне", "Create", "SchoolReceptionModels", new { controller = "SchoolReceptionModels", action = "Create", id = UrlParameter.Optional }, null)
+                                        </li>
+                                        <li>
+                                            @Html.ActionLink("Преглед, редактиране, изтриване", "Index", "SchoolReceptionModels", new { controller = "SchoolReceptionModels", action = "Index", id = UrlParameter.Optional }, null)
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">Специалности</a>
+                                    <ul>
+                                        <li>
+                                            @Html.ActionLink("Добавяне", "Create", "SchoolSpecialtiesModels", new { controller = "SchoolSpecialtiesModels", action = "Create", id = UrlParameter.Optional }, null)
+                                        </li>
+                                        <li>
+                                            @Html.ActionLink("Преглед, редактиране, изтриване", "Index", "SchoolSpecialtiesModels", new { controller = "SchoolSpecialtiesModels", action = "Index", id = UrlParameter.Optional }, null)
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">График на учебното време</a>
+                                    <ul>
+                                        <li>
+                                            <a href="#">Учебна година</a>
+                                            <ul>
+                                                <li>
+                                                    @Html.ActionLink("Добавяне", "Create", "SchoolScheduleYearModels", new { controller = "SchoolScheduleYearModels", action = "Create", id = UrlParameter.Optional }, null)
+                                                </li>
+                                                <li>
+                                                    @Html.ActionLink("Преглед, редактиране, изтриване", "Index", "SchoolScheduleYearModels", new { controller = "SchoolScheduleYearModels", action = "Index", id = UrlParameter.Optional }, null)
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="#">Ваканции</a>
+                                            <ul>
+                                                <li>
+                                                    @Html.ActionLink("Добавяне", "Create", "SchoolVacationsModels", new { controller = "SchoolVacationsModels", action = "Create", id = UrlParameter.Optional }, null)
+                                                </li>
+                                                <li>
+                                                    @Html.ActionLink("Преглед, редактиране, изтриване", "Index", "SchoolVacationsModels", new { controller = "SchoolVacationsModels", action = "Index", id = UrlParameter.Optional }, null)
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="#">Неучебни дни</a>
+                                            <ul>
+                                                <li>
+                                                    @Html.ActionLink("Добавяне", "Create", "SchoolOffDaysModels", new { controller = "SchoolOffDaysModels", action = "Create", id = UrlParameter.Optional }, null)
+                                                </li>
+                                                <li>
+                                                    @Html.ActionLink("Преглед, редактиране, изтриване", "Index", "SchoolOffDaysModels", new { controller = "SchoolOffDaysModels", action = "Index", id = UrlParameter.Optional }, null)
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="#">Начало на втория учебен срок</a>
+                                            <ul>
+                                                <li>
+                                                    @Html.ActionLink("Добавяне", "Create", "SchoolLentTermStartModels", new { controller = "SchoolLentTermStartModels", action = "Create", id = UrlParameter.Optional }, null)
+                                                </li>
+                                                <li>
+                                                    @Html.ActionLink("Преглед, редактиране, изтриване", "Index", "SchoolLentTermStartModels", new { controller = "SchoolLentTermStartModels", action = "Index", id = UrlParameter.Optional }, null)
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="#">Край на втория учебен срок</a>
+                                            <ul>
+                                                <li>
+                                                    @Html.ActionLink("Добавяне", "Create", "SchoolLentTermEndModels", new { controller = "SchoolLentTermEndModels", action = "Create", id = UrlParameter.Optional }, null)
+                                                </li>
+                                                <li>
+                                                    @Html.ActionLink("Преглед, редактиране, изтриване", "Index", "SchoolLentTermEndModels", new { controller = "SchoolLentTermEndModels", action = "Index", id = UrlParameter.Optional }, null)
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">График на учебните часове</a>
+                                    <ul>
+                                        <li>
+                                            @Html.ActionLink("Добавяне", "Create", "SchoolHoursModels", new { controller = "SchoolHoursModels", action = "Create", id = UrlParameter.Optional }, null)
+                                        </li>
+                                        <li>
+                                            @Html.ActionLink("Преглед, редактиране, изтриване", "Index", "SchoolHoursModels", new { controller = "SchoolHoursModels", action = "Index", id = UrlParameter.Optional }, null)
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">График за консултации</a>
+                                    <ul>
+                                        <li>
+                                            @Html.ActionLink("Добавяне", "Create", "SchoolConsultationsModels", new { controller = "SchoolConsultationsModels", action = "Create", id = UrlParameter.Optional }, null)
+                                        </li>
+                                        <li>
+                                            @Html.ActionLink("Преглед, редактиране, изтриване", "Index", "SchoolConsultationsModels", new { controller = "SchoolConsultationsModels", action = "Index", id = UrlParameter.Optional }, null)
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    }
+                </ul>
+
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer class="text-center">
+            </i><p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+
+</body>
+</html>
+
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtsVcaSYRB_lB9A5fk5ZiAXvnxm3Dm_xg"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        initialize();
+    });
+    function initialize() {
+        var mapOptions = {
+            center: new google.maps.LatLng(44.1094225, 27.2682607),
+            zoom: 18,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById("map_canvas"),
+          mapOptions);
+        // create a marker
+        var latlng = new google.maps.LatLng(6.9167, 79.8473);
+        var marker = new google.maps.Marker({
+            position: latlng,
+            map: map,
+            title: 'My Place'
+        });
+    }
+
+</script>
+

@@ -1,0 +1,11 @@
+﻿@model IEnumerable<School.ViewModels.ContentLearningProcessModes.OffDaysViewModel>
+
+@foreach (var item in Model)
+{
+    <div class="row">
+        <div class="col-md-6 text-left">@Html.DisplayFor(model => item.Text)</div>
+        <div class="col-md-6 text-left">@Html.DisplayFor(model => item.Date)</div>
+    </div>
+    <br />
+}
+

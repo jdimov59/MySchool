@@ -1,0 +1,40 @@
+﻿@model IEnumerable<School.ViewModels.ConsultationsTableViewModel>
+
+<div class="row">
+    <div class="col-md-2 col-md-offset-1">
+        <h3><strong>Учител</strong></h3>
+    </div>
+    <div class="col-md-2">
+        <h3><strong>Учебен предмет</strong></h3>
+    </div>
+    <div class="col-md-2">
+        <h3><strong>Ден от седмицата</strong></h3>
+    </div>
+    <div class="col-md-2">
+        <h3><strong>Място на провеждане</strong></h3>
+    </div>
+    <div class="col-md-2">
+        <h3><strong>Начален час</strong></h3>
+    </div>
+</div>
+<hr />
+@foreach (var item in Model)
+{
+    <div class="row">
+        <div class="col-md-2 col-md-offset-1">
+            <h4>@Html.DisplayFor(model => item.TeacherName)</h4>
+        </div>
+        <div class="col-md-2">
+            <h4>@Html.DisplayFor(model => item.Subject)</h4>
+        </div>
+        <div class="col-md-2">
+            <h4>@Html.DisplayFor(model => item.DayOfTheWeek)</h4>
+        </div>
+        <div class="col-md-2">
+            <h4>@Html.DisplayFor(model => item.Classroom)</h4>
+        </div>
+        <div class="col-md-2">
+            <h4>@Html.DisplayFor(model => item.StartTime)</h4>
+        </div>
+    </div>
+}

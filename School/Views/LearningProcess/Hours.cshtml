@@ -1,0 +1,35 @@
+﻿@model School.ViewModels.HoursViewModel
+
+@{
+    ViewBag.Title = "Hours";
+}
+
+<div class=" text-center">
+    <h2>График на учебните часове</h2>
+</div>
+<br /><br />
+
+
+<div class="row">
+    <h3>
+        РАЗПИСАНИЕ<br />
+        на часовете през II-рия срок на учебната @Html.Partial("LearningProcess/_ScheduleYear", Model.ScheduleYear) година
+    </h3>
+</div>
+<hr />
+<br />
+
+<div class="row">
+    <div class="col-md-2 col-md-offset-3">
+        <h4><strong>Час</strong></h4>
+    </div>
+    <div class="col-md-2">
+        <h4><strong>Начало</strong></h4>
+    </div>
+    <div class="col-md-2">
+        <h4><strong>Край</strong></h4>
+    </div>
+</div>
+<div class="row">
+    @Html.Partial("_HoursTable", Model.HoursTable)
+</div>

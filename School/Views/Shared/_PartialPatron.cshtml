@@ -1,0 +1,6 @@
+﻿@model IEnumerable<School.Models.PatronViewModel>
+
+@foreach (var item in Model)
+{
+    <div class="row">@Html.Raw(item.Content)</div>
+}

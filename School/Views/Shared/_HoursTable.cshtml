@@ -1,0 +1,16 @@
+﻿@model IEnumerable<School.ViewModels.HoursTableViewModel>
+
+@foreach (var item in Model)
+{
+    <div class="row">
+        <div class="col-md-2 col-md-offset-3">
+            <h4>@Html.DisplayFor(model => item.Hours)</h4>
+        </div>
+        <div class="col-md-2">
+            <h4>@Html.DisplayFor(model => item.Start)</h4>
+        </div>
+        <div class="col-md-2">
+            <h4>@Html.DisplayFor(model => item.End)</h4>
+        </div>
+    </div>
+}

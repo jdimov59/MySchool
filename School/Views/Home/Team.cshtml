@@ -1,0 +1,24 @@
+﻿@model IEnumerable<School.ViewModels.PersonViewModel>
+
+@{
+    ViewBag.Title = "Team";
+}
+
+<h2>Колектив</h2><br />
+
+
+<div>
+    @foreach (var item in Model)
+    {
+        <hr />
+        <div class="row">
+            <div class="col-md-6 text-right namesteam">
+                <strong>@Html.DisplayFor(model => item.FullName)</strong>
+            </div>
+            <div class="col-md-6 text-left">
+                @Html.DisplayFor(model => item.Position)
+            </div>
+
+        </div>
+    }
+</div>

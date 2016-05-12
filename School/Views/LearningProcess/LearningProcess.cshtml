@@ -1,0 +1,53 @@
+﻿@model School.ViewModels.LearningProcessViewModels
+
+@{
+    ViewBag.Title = "LearningProcess";
+}
+
+<div class="row">
+    <div class="row">
+        <div class="text-center">
+            <h2>
+                ГРАФИК<br>на учебното време за учебната
+                @Html.Partial("LearningProcess/_ScheduleYear", Model.ScheduleYear) година
+            </h2>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-md-4 text-center">
+            <h4>ВАКАНЦИИ</h4><br>
+            <strong>
+                <br>
+                (начало и край на ваканциите с изключение на лятната през учебната 2012/2013 година)
+            </strong>
+        </div>
+        <div class="col-md-8">
+            @Html.Partial("LearningProcess/_Vacations", Model.Vacations)
+        </div>
+    </div><hr />
+    <div class="row">
+        <div class="col-md-4 text-center">
+            <h4>НЕУЧЕБНИ ДНИ</h4>
+        </div>
+        <div class="col-md-8">
+            @Html.Partial("LearningProcess/_OffDays", Model.OffDays)
+        </div>
+    </div><hr />
+    <div class="row">
+        <div class="col-md-4 text-center">
+            <h4>НАЧАЛО НА ВТОРИЯ УЧЕБЕН СРОК</h4>
+        </div>
+        <div class="col-md-8">
+            @Html.Partial("LearningProcess/_LentTermStart", Model.LentTermStart)
+        </div>
+    </div><hr />
+    <div class="row">
+        <div class="col-md-4 text-center">
+            <h4>КРАЙ НА ВТОРИЯ УЧЕБЕН СРОК</h4>
+        </div>
+        <div class="col-md-8">
+            @Html.Partial("LearningProcess/_LentTermEnd", Model.LentTermEnd)
+        </div>
+    </div>
+</div>

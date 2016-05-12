@@ -1,0 +1,47 @@
+﻿@model School.ViewModels.ParentalSpecialtiesViewModel
+
+@{
+    ViewBag.Title = "Specialties";
+}
+
+<h2>Специалности, по които се обучват учениците през настоящата<br />
+@Html.Partial("LearningProcess/_ScheduleYear", Model.ScheduleYear) учебна година:</h2>
+<hr />
+<br />
+
+@foreach (var item in Model.Specialties)
+{
+    <div class="row">
+        <div class="container-table col-md-10 col-md-offset-1">
+            <div class="first-row-table row">
+                <div class="col-md-6 text-right"><strong>ПРОФЕСИЯ / КОД</strong></div>
+                <div class="col-md-6 text-left">@Html.DisplayFor(model => item.Profession) / @Html.DisplayFor(model => item.CodeProfession)</div>
+            </div>
+            <div class="row-table row">
+                <div class="col-md-6 text-right"><strong>Специалност / код</strong></div>
+                <div class="col-md-6 text-left">@Html.DisplayFor(model => item.Specialty) / @Html.DisplayFor(model => item.CodeSpecialty)</div>
+            </div>
+            <div class="row-table row">
+                <div class="col-md-6 text-right"><strong>Входящо образователно равнище</strong></div>
+                <div class="col-md-6 text-left">@Html.DisplayFor(model => item.AdmissionEducationalLevel)</div>
+            </div>
+            <div class="row-table row">
+                <div class="col-md-6 text-right"><strong>Форма на обучение</strong></div>
+                <div class="col-md-6 text-left">@Html.DisplayFor(model => item.FormOfEducation)</div>
+            </div>
+            <div class="row-table row">
+                <div class="col-md-6 text-right"><strong>Срок на обучение</strong></div>
+                <div class="col-md-6 text-left">@Html.DisplayFor(model => item.PeriodOfTraining)</div>
+            </div>
+            <div class="row-table row">
+                <div class="col-md-6 text-right"><strong>Придобива степен на образование</strong></div>
+                <div class="col-md-6 text-left">@Html.DisplayFor(model => item.EducationalDegree)</div>
+            </div>
+            <div class="row-table row">
+                <div class="col-md-6 text-right"><strong>Придобива степен на професионална квалификация</strong></div>
+                <div class="col-md-6 text-left">@Html.DisplayFor(model => item.LevelOfQualification)</div>
+            </div>
+        </div>
+    </div>
+    <br /><br />
+}

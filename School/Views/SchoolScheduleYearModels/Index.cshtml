@@ -1,0 +1,55 @@
+﻿@model IEnumerable<School.Models.BaseScheduleYearModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Преглед</h2>
+<hr />
+
+<p>
+    <h4>@Html.ActionLink("Добави", "Create")</h4>
+</p>
+<br /><br />
+
+<div class="row">
+    <div class="text-center"><h3>Учебна година</h3></div>
+</div>
+<br />
+
+@foreach (var item in Model)
+{
+    <div class="row">
+        <div class="col-md-6 text-right">
+            <h4>@Html.DisplayFor(modelItem => item.ScheduleYear)</h4>
+        </div>
+        <div class="col-md-6 text-left">
+            <h4>
+                @Html.ActionLink("Редакция", "Edit", new { id = item.Id }) | 
+                @Html.ActionLink("Изтриване", "Delete", new { id = item.Id })
+            </h4>
+        </div>
+    </div>
+}
+
+
+@*<table class="table">
+        <tr>
+            <th>
+                <h4 class="text-center">Учебна година</h4>
+            </th>
+        </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ScheduleYear)
+            </td>
+            <td>
+                @Html.ActionLink("Редакция", "Edit", new { id = item.Id })
+                @Html.ActionLink("Изтриване", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+    </table>*@

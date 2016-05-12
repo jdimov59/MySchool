@@ -1,0 +1,6 @@
+﻿@model IEnumerable<School.Models.HistoryViewModel>
+
+@foreach (var item in Model)
+{
+    <div class="row">@Html.Raw(item.Content)</div>
+}

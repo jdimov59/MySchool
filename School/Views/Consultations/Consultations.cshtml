@@ -1,0 +1,17 @@
+﻿@model School.ViewModels.ConsultationsViewModel
+
+@{
+    ViewBag.Title = "Consultations";
+}
+
+<div class=" text-center">
+    <h2>ГРАФИК<br />
+ЗА КОНСУЛТАЦИИ НА УЧИТЕЛИТЕ<br />
+ПО УЧЕБНИ ПРЕДМЕТИ<br />
+I учебен срок, @Html.Partial("LearningProcess/_ScheduleYear", Model.ScheduleYear) учебна година</h2>
+</div>
+<hr />
+<br /><br />
+
+@Html.Partial("Consultations/_ConsultationTablePartial", Model.ConsultationTable)
+

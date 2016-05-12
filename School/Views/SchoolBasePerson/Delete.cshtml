@@ -1,0 +1,58 @@
+﻿@model School.Models.BasePersonModel
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Изтриване</h2>
+
+<h3>Сигурни ли сте, че искате да изтриете този текст?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FullName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FullName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Position)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Position)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Phone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Phone)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Изтрий" class="btn btn-default" />
+        </div>
+    }
+</div><br />
+
+<div>
+    @Html.ActionLink("Обратно в \"Преглед\"", "Index")
+</div>

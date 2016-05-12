@@ -1,0 +1,102 @@
+﻿@model School.Models.HomePageViewModel
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+
+<!-- Carousel
+================================================== -->
+<div id="myCarousel" class="carousel slide">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+        <div class="item active">
+            <img src="~/images/0095.png" style="width:100%" class="img-responsive">
+        </div>
+        <div class="item">
+            <img src="~/images/5gLOWh4.png" class="img-responsive">
+        </div>
+        <div class="item">
+            <img src="~/images/h02.png" class="img-responsive">
+        </div>
+    </div>
+    <!-- Controls -->
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+        <span class="icon-prev"></span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+        <span class="icon-next"></span>
+    </a>
+</div><br /><br />
+<!-- /.carousel -->
+<!-- Marketing messaging and featurettes
+================================================== -->
+<!-- Wrap the rest of the page in another container to center all the content. -->
+
+<div class="container marketing">
+
+    <!-- Three columns of text below the carousel -->
+    <div class="row">
+        <div class="col-md-4 text-center">
+            <img class="img-circle" src="~/images/150x2.jpg">
+            <div class="active"><a href="#tab1" data-toggle="tab" class="" contenteditable="false"><h2>Исторически сведения</h2></a></div>
+        </div>
+        <div class="col-md-4 text-center">
+            <img class="img-circle" src="~/images/pSlav.jpg">
+            <div><a href="#tab2" data-toggle="tab" class="" contenteditable="false"><h2>Пенчо Славейков</h2></a></div>
+        </div>
+        <div class="col-md-4 text-center">
+            <img class="img-circle" src="~/images/teachers4.jpg">
+            <div><a href="#tab3" data-toggle="tab" class="" contenteditable="false"><h2>Материална база</h2></a></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="tab-content">
+            <div class="tab-pane active" id="tab1">
+                <div class="" contenteditable="false">
+                    <div class="row">
+                        <h3 class="text-center">
+                            Исторически сведения за развитието на  ПГЛП „П. Славейков” – гр. Силистра
+                        </h3>
+                    </div>
+                    <div class="row">
+                        @Html.Partial("_PartialHistory", Model.History)
+                    </div>
+                    <p>&nbsp;</p>
+                </div>
+            </div>
+            <div class="tab-pane" id="tab2">
+                <div class="row">
+                    <h3 class="text-center">
+                        Патрон на ПГЛП "Пенчо Славейков" – гр. Силистра
+                    </h3>
+                </div>
+                <div class="row">
+                    @Html.Partial("_PartialPatron", Model.Patron)
+                </div>
+            </div>
+            <div class="tab-pane" id="tab3">
+                <div class="row">
+                    <h3 class="text-center">
+                        Материална база на  ПГЛП „П. Славейков” – гр. Силистра
+                    </h3>
+                </div>
+                <div class="row">
+                    @Html.Partial("_PartialMaterialBase", Model.MaterialBase)
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.row -->
+
+    <footer>
+        <p class="text-center"><a href="#">Обратно горе</a></p>
+        @*<p>This Bootstrap layout is compliments of Bootply. · <a href="http://www.bootply.com/62603">Edit on Bootply.com</a></p>*@
+    </footer>
+
+</div><!-- /.container -->

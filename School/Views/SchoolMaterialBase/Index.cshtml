@@ -1,0 +1,33 @@
+﻿@model IEnumerable<School.Models.MaterialBaseModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Преглед</h2>
+
+<p>
+    @Html.ActionLink("Добавяне на ново съдържание", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Content)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Content)
+            </td>
+            <td>
+                @Html.ActionLink("Редакция", "Edit", new { id = item.Id })
+                @Html.ActionLink("Изтриване", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>
